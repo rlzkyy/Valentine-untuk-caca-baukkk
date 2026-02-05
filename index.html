@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special for CACA BAUKKK ASLI✨</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * .message-content p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #eee;
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        .message-content h2 {
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, #ff6ec4, #7873f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+            {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        section {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .05);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 450px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 50px rgba(255, 20, 147, 0.15);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+
+        .card h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ff6ec4, #7873f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .card button,
+        .card-button {
+            border: none;
+            background: linear-gradient(90deg, #ff6ec4, #7873f5);
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s;
+            margin-top: 25px;
+        }
+        .playlist-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .playlist-header h2 {
+            color: #ff6ec4;
+            margin-bottom: 5px;
+        }
+
+        .playlist-header p {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        .playlist-container {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+        }
+
+        .song-card {
+            width: 180px;
+            background: #111;
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
+        }
+
+        .song-box {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .song-info span {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+
+        .song-info small {
+            display: block;
+            opacity: 0.5;
+            font-size: 0.7rem;
+            margin-bottom: 10px;
+        }
+
+        .play-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.65rem;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 10px;
+        }
+
+        .song-card.active {
+            transform: translateY(-5px);
+            border-color: rgba(255, 110, 196, 0.5);
+            box-shadow: 0 0 30px rgba(255, 50, 100, 0.4);
+        }
+
+        #status-text {
+            margin-top: 40px;
+            text-align: center;
+            color: #ff6ec4;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1rem;
+            min-height: 24px;
+        }
+        .gallery-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .gallery-section h2 {
+            color: #7873f5;
+            margin-bottom: 30px;
+        }
+
+        .polaroid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 10px 10px 25px 10px;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(3deg);
+        }
+
+        .polaroid:nth-child(odd) {
+            transform: rotate(-3deg);
+        }
+
+        .polaroid img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+
+        .polaroid span {
+            display: block;
+            color: #333;
+            font-size: 0.75rem;
+            margin-top: 10px;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+
+        .polaroid:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            z-index: 10;
+        }
+
+        .message-overlay {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .message-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 110, 196, 0.3);
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+
+        .message-content h2 {
+            color: #ff6ec4;
+            margin-bottom: 20px;
+        }
+
+        .message-content p {
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ff6ec4;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card-button {
+            border: 2px solid #ff6ec4;
+            background: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card-button:hover {
+            background: #ff6ec4;
+            box-shadow: 0 0 20px rgba(255, 110, 196, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="stars"></canvas>
+
+    <section>
+        <div class="card">
+            <h1>HAPPY VALENTINE PANJUL BAUK! 💖</h1>
+            <p>Ntah kenapa setiap kali dengar lagu-lagu ini, yang muncul di pikiran selalu kamu. Coba dengerin deh,
+                mungkin kamu bakal paham maksudnya.</p>
+            <button onclick="document.getElementById('music').scrollIntoView({behavior:'smooth'})">
+                Lihat Playlistnya ✨
+            </button>
+        </div>
+    </section>
+
+    <section id="music">
+        <div class="playlist-header">
+            <h2>Lagu Favorit Kamu 🎶</h2>
+            <p>hmm ntah kenapa aku jadi ikut suka sama lagu lagu mu </p>
+        </div>
+
+        <div class="playlist-container">
+            <div class="song-card" onclick="playSong('s1', this, 'Jadi Kekasihku Saja')">
+                <div class="song-box" style="background: #e94e77;"><i>🤍</i></div>
+                <div class="song-info"><span>Jadi Kekasihku Saja</span><small>Keisya Levronka</small></div>
+                <div class="play-indicator"><span class="icon">▶</span> <span class="txt">Play Song</span></div>
+                <audio id="s1"
+                    src="assest/audio/Keisya Levronka - Jadi Kekasihku Saja (Official Music Video) [zt4NeGqnCOk].mp3"></audio>
+            </div>
+
+            <div class="song-card" onclick="playSong('s2', this, 'Pilihanku')">
+                <div class="song-box" style="background: #a855f7;"><i>🤍</i></div>
+                <div class="song-info"><span>Pilihanku</span><small>Maliq & D'Essentials</small></div>
+                <div class="play-indicator"><span class="icon">▶</span> <span class="txt">Play Song</span></div>
+                <audio id="s2" src="assest/audio/Maliq_D_Essentials_-_Pilihanku_(mp3.pm).mp3"></audio>
+            </div>
+
+            <div class="song-card" onclick="playSong('s3', this, 'Siapkah Kau Tuk Jatuh Cinta Lagi')">
+                <div class="song-box" style="background: #f43f5e;"><i>🤍</i></div>
+                <div class="song-info"><span>Siapkah Kau...</span><small>HIVI!</small></div>
+                <div class="play-indicator"><span class="icon">▶</span> <span class="txt">Play Song</span></div>
+                <audio id="s3"
+                    src="assest/audio/HIVI! - Siapkah Kau 'Tuk Jatuh Cinta Lagi Official Lyric Video.mp3"></audio>
+            </div>
+        </div>
+        <div id="status-text"></div>
+    </section>
+
+    <section class="gallery-section">
+        <h2>Kesukaan Kamu ✨</h2>
+        <div class="polaroid-grid">
+            <div class="polaroid">
+                <img src="assest/img/dorayakki.png" alt="1">
+                <span>Dorayakki Kesukaan Panjul</span>
+            </div>
+            <div class="polaroid">
+                <img src="assest/img/matcha.jpg" alt="2">
+                <span>Matcha Rasa Rumput</span>
+            </div>
+            <div class="polaroid">
+                <img src="assest/img/sawit.png" alt="3">
+                <span>Si Rambut Sawit Yang paling Di Sukain Panjul</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 80px;">
+            <button class="card-button" onclick="openMessage()">Klik untuk Pesan Terakhir ✨</button>
+        </div>
+    </section>
+
+    <div id="message-page" class="message-overlay">
+        <div class="message-content">
+            <span class="close-btn" onclick="closeMessage()">x</span>
+            <h2>Untuk caca/sasa </h2>
+            <p>
+                "Dunia ini luas, orangnya banyak, tapi aneh ya... kenapa frekuensi aku cuma nyangkut di kamu doang?
+                Mungkin karena efek Matcha atau emang kamunya aja yang terlalu 'lucu
+                <br><br>
+                Makasih udah ada di duniaku yang tadinya biasa aja jadi lebih berwarna. Happy Valentine ya, Panjul!
+                Jangan bosen sama aku
+                <br><br>
+                dan juga aku bukan orang yang pinter ngerangkai kata secara langsung, jadi lewat lagu dan foto-foto ini
+                aku harap kamu tau kalau kehadiran kamu itu berharga.
+                <br><br>
+                aku minta maaf cuma ngasi kata kata gini doang untuk Valentine. 
+                <br><br>
+                karena kamerin kamu pernah bilang kalau valentine itu memang identik dengan coklat atau hal hal yang manis
+                sebener nya bukan aku tidak mau kasi kamu coklat cuma karena keterbatasan wilayah dan jarak, apalagi di daerah
+                mu masi belum ada ojek online jadi aku tidak bisa ngirim coklat ke kamu 
+                <br><br>
+                Tetap jadi diri kamu yang keren ya! 😊
+            </p>
+            <div style="margin-top: 30px; font-size: 2rem;">💌</div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+        let w, h;
+        function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+        const stars = [...Array(150)].map(() => ({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.2, s: Math.random() * 0.4 + 0.1 }));
+        function animate() {
+            ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#fff';
+            stars.forEach(star => {
+                ctx.beginPath(); ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2); ctx.fill();
+                star.y += star.s; if (star.y > h) star.y = 0;
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+        let currentAudio = null;
+        let currentCard = null;
+
+        function playSong(id, element, title) {
+            const song = document.getElementById(id);
+            const statusBox = document.getElementById('status-text');
+
+            if (currentAudio && currentAudio !== song) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentCard.classList.remove('active');
+                currentCard.querySelector('.txt').innerText = "Play Song";
+                currentCard.querySelector('.icon').innerText = "▶";
+            }
+
+            if (song.paused) {
+                song.play();
+                element.classList.add('active');
+                element.querySelector('.txt').innerText = "Playing...";
+                element.querySelector('.icon').innerText = "⏸";
+                statusBox.innerText = title + " SEDANG DIPUTAR";
+                currentAudio = song;
+                currentCard = element;
+            } else {
+                song.pause();
+                element.classList.remove('active');
+                element.querySelector('.txt').innerText = "Play Song";
+                element.querySelector('.icon').innerText = "▶";
+                statusBox.innerText = "";
+            }
+        }
+
+        function openMessage() {
+            document.getElementById('message-page').style.display = 'flex';
+        }
+        function closeMessage() {
+            document.getElementById('message-page').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
